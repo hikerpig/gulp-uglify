@@ -24,11 +24,11 @@ function setup(opts) {
     opts = {};
   }
 
-  var options = deap({}, opts, {
+  var options = deap({}, {
     fromString: true,
     output: {},
     onFileCreate: function(){}
-  });
+  }, opts);
 
   if (options.preserveComments === 'all') {
     options.output.comments = true;
