@@ -27,7 +27,7 @@ function setup(opts) {
   var options = deap({}, opts, {
     fromString: true,
     output: {},
-    onFileCreate: null
+    onFileCreate: function(){}
   });
 
   if (options.preserveComments === 'all') {
@@ -69,7 +69,7 @@ module.exports = function (opts, uglify) {
     }, createError.bind(null, file));
 
     if (typeof options.onFileCreate === 'function') {
-      options.onFileCreate(file, m);
+      options.onFileCreate(file, mangled);
     }
     if (mangled instanceof PluginError) {
       return callback(mangled);
